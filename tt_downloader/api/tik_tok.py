@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
+import os
 
 
 class TikTok_video:
@@ -58,9 +59,9 @@ class TikTok_video:
 
         mp4_file = urlopen(downloadLink)
         with open(f"tiktok/{self.name}.mp4", "wb") as file:
-            self.path = f"tiktok/{self.name}.mp4"
             while True:
                 data = mp4_file.read(4096)
                 if data: file.write(data)
                 else: break
+            self.path = f"tiktok/{self.name}.mp4"
 
